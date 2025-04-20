@@ -1,19 +1,21 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useAuth } from '../context/AuthContext';  // ← UPDATED: import from the context folder
-import './Downloadpage.css';  // ← Assuming the styles remain in the same folder
+import { useAuth } from '../context/AuthContext';
+import './Downloadpage.css';
+
+const API_URL = process.env.REACT_APP_API_URL; // ✅ Use the env variable
 
 const DownloadPage = () => {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [deleting, setDeleting] = useState(null);
-  const { token } = useAuth(); // ← Access token from the context
+  const { token } = useAuth();
 
   const fetchFiles = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:4000/files', {
+      const res = await fetch(`${API_URL}/files`, {
         headers: {
-          Authorization: `Bearer ${token}`, // ← Add token in Authorization header
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -38,10 +40,10 @@ const DownloadPage = () => {
     setDeleting(filename);
 
     try {
-      const res = await fetch(`http://localhost:4000/files/${filename}`, {
+      const res = await fetch(`${API_URL}/files/${filename}`, {
         method: 'DELETE',
         headers: {
-          Authorization: `Bearer ${token}`, // ← Add token in Authorization header
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -64,7 +66,7 @@ const DownloadPage = () => {
       alert('Please login to download the file.');
       return;
     }
-    window.open(`http://localhost:4000/files/${filename}?token=${token}`, '_blank');
+    window.open(`${API_URL}/files/${filename}?token=${token}`, '_blank');
   };
 
   return (

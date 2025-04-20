@@ -1,39 +1,34 @@
 import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext'; // ← UPDATED: import from context folder
-import './UploadPage.css';  // ← No change, assuming styles are in the same folder
+import { useAuth } from '../context/AuthContext';
+import './UploadPage.css';
 
 function UploadPage() {
-  const [files, setFiles] = useState([]);  // ← Changed to store multiple files
-  const { token } = useAuth();             // ← NEW: grab the JWT
+  const [files, setFiles] = useState([]);
+  const { token } = useAuth();
 
-  // Handle the file selection (via click)
   const handleFileChange = (e) => {
-    setFiles(e.target.files);  // ← Store all selected files
+    setFiles(e.target.files);
   };
 
-  // Handle the drag over event (to allow dropping files)
   const handleDragOver = (e) => {
     e.preventDefault();
     e.stopPropagation();
     e.target.style.backgroundColor = '#f0f5ff';
   };
 
-  // Handle the drag leave event
   const handleDragLeave = (e) => {
     e.preventDefault();
     e.stopPropagation();
     e.target.style.backgroundColor = '';
   };
 
-  // Handle the drop event
   const handleDrop = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setFiles(e.dataTransfer.files);  // ← Store all dropped files
+    setFiles(e.dataTransfer.files);
     e.target.style.backgroundColor = '';
   };
 
-  // Handle file upload
   const handleUpload = async () => {
     if (files.length === 0) {
       alert('Please select files to upload.');
@@ -41,25 +36,25 @@ function UploadPage() {
     }
 
     const formData = new FormData();
-    // Append each selected file to FormData
     Array.from(files).forEach((file) => {
-      formData.append('files', file);  // ← Append multiple files with the same field name
+      formData.append('files', file);
     });
 
     try {
-      const res = await fetch('http://localhost:4000/upload', {   // ← REMOVED ?key=secretKey
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/upload`, {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${token}`,                      // ← NEW: attach JWT
+          Authorization: `Bearer ${token}`,
         },
         body: formData,
       });
 
       if (res.ok) {
         alert('✅ Files uploaded successfully!');
-        setFiles([]);  // Reset the files after upload
+        setFiles([]);
       } else {
-        alert('❌ Upload failed.');
+        const errorText = await res.text();
+        alert(`❌ Upload failed: ${errorText}`);
       }
     } catch (err) {
       console.error('Upload error:', err);
@@ -83,7 +78,7 @@ function UploadPage() {
             onChange={handleFileChange}
             className="file-input"
             id="file-input"
-            multiple  // ← Allow multiple file selection
+            multiple
           />
           <label htmlFor="file-input" className="file-label">
             {files.length > 0
