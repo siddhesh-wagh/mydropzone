@@ -1,0 +1,72 @@
+/* Container styling */
+.download-section {
+  padding: 40px;
+  background-color: #f0f4f8;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Heading */
+.download-section h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* List of files */
+.download-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.download-item {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.download-item a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 16px;
+}
+
+.download-item a:hover {
+  color: #0056b3;
+}
+
+/* Delete button */
+.delete-btn {
+  padding: 8px 16px;
+  background-color: #ff4747;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #e33636;
+}
+
+.delete-btn:focus {
+  outline: none;
+}
+
+/* Disabled delete button during deletion */
+.deleting-btn {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.deleting-btn:hover {
+  background-color: #cccccc;
+}

@@ -1,0 +1,120 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Arial', sans-serif;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f4f8;
+}
+
+/* Container */
+.upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Upload Box */
+.upload-box {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 450px; /* Slightly increased width */
+  min-height: 350px; /* Increased minimum height to make the drop area larger */
+}
+
+/* Heading */
+.upload-box h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Drop Area */
+.drop-area {
+  position: relative;
+  border: 2px dashed #007bff;
+  border-radius: 8px;
+  padding: 60px; /* Increased padding to make the drop area bigger */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 150px; /* Increased the minimum height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff; /* White background for better contrast */
+}
+
+.drop-area:hover {
+  background-color: #f5f9ff;
+  border-color: #0056b3;
+}
+
+.drop-area:active {
+  background-color: #e6f0ff; /* Add a lighter color when clicked */
+}
+
+/* File Input (hidden) */
+.file-input {
+  display: none;
+}
+
+/* Label for File Input */
+.file-label {
+  font-size: 18px; /* Increased font size */
+  color: #555;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  transition: all 0.3s ease;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* Hover effect for the label */
+.file-label:hover {
+  color: #007bff;
+}
+
+/* Button */
+.upload-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+  background-color: #0056b3;
+}
+
+.upload-btn:active {
+  transform: scale(0.98);
+}
+
+.upload-btn:focus {
+  outline: none;
+}
+
+/* File name display */
+.file-name {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #007bff;
+  text-align: center;
+}
