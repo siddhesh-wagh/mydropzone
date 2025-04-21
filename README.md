@@ -1,4 +1,3 @@
-
 # 📦 MyDropzone
 
 [![Build](https://img.shields.io/badge/build-passing-brightgreen)](https://vercel.com)
@@ -84,3 +83,8 @@ This project is licensed under the MIT License — see the [LICENSE](./LICENSE) 
 - [Express](https://expressjs.com/)
 - [Render](https://render.com/)
 - [Vercel](https://vercel.com/)
+
+## 🤝 Credits
+
+Built by [@siddhesh-wagh](https://github.com/siddhesh-wagh)  
+With 💙 using **React** + **Express**
