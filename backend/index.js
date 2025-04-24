@@ -15,7 +15,8 @@ if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
 }
 
-const PORT = 4000;
+// const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const SECRET_KEY = process.env.SECRET_KEY || 'supersecretkey';
 
 app.use(cors());
